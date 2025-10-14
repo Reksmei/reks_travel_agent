@@ -85,7 +85,7 @@ def _format_date_for_api(date_str: str) -> Optional[str]:
         except ValueError:
             continue
             
-    # If all standard parsing fails, return a unique marker string instead of the original string
+    # If standard parsing fails, return a unique marker string instead of the original string
     return "PARSE_FAILURE_MARKER"
 
 def _resolve_airport_code(location_name: str) -> str:
@@ -119,15 +119,12 @@ def get_flights(
     A good example of a get request is:
     https://serpapi.com/search.json?engine=google_flights&departure_id=PEK&arrival_id=AUS&outbound_date=2025-10-11&return_date=2025-10-17&currency=USD&hl=en
     """
-    # NOTE: The LLM will populate origin_name/destination_name with what it extracts from user input.
     if not origin_name or not destination_name:
         return {"error": "Please provide both origin and destination airports or cities."}
     
-    # --- Resolve Location Names ---
     departure_id = _resolve_airport_code(origin_name)
     arrival_id = _resolve_airport_code(destination_name)
 
-    # If the resolved ID is still a long city name
     if len(departure_id) > 5 or len(arrival_id) > 5:
         return {"error": f"Could not determine a valid airport code for one of the locations. Please ask the user to provide a 3-letter airport code (e.g., LHR, BCN)."}
     # ---------------------------
