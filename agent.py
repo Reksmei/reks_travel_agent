@@ -6,7 +6,7 @@ import re
 import wikipedia 
 
 
-SERPAPI_API_KEY = '5414516836ae2081ea97e7ffa3963dc47dd0d02e1536fea9d18b013f610f3fc4'
+SERPAPI_API_KEY = #insert your api key here
 
 # Airport Mapping
 AIRPORT_MAPPING = {
