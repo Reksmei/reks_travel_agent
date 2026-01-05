@@ -68,12 +68,12 @@ def _format_date_for_api(date_str: str) -> Optional[str]:
     # 1. Simple cleanup: remove ordinal suffixes (like 'st', 'nd', 'rd', 'th')
     cleaned_date_str = re.sub(r'(\d)(st|nd|rd|th)', r'\1', date_str).strip()
     
-    # 2. Try multiple common date formats. Use the most common English formats first.
+    # 2. Try multiple common date formats - Use the most common English formats first.
     formats_to_try = [
-        '%Y-%m-%d',         # e.g., 2025-10-12 (Already correct)
+        '%Y-%m-%d',         # e.g., 2025-10-12 
         '%d %B %Y',         # e.g., 12 October 2025
         '%d %b %Y',         # e.g., 12 Oct 2025
-        '%B %d %Y',         # e.g., October 12 2025 (without comma)
+        '%B %d %Y',         # e.g., October 12 2025 
         '%B %d, %Y',        # e.g., October 12, 2025
         '%m/%d/%Y',         # e.g., 10/12/2025
         '%d/%m/%Y',         # e.g., 12/10/2025
