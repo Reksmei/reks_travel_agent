@@ -3,10 +3,14 @@ from typing import Optional, Dict, Any
 import requests
 from datetime import datetime
 import re
-import wikipedia 
+import wikipedia
+import os
+from dotenv import loadenv
+
+loadenv()
 
 
-SERPAPI_API_KEY = #insert your api key here
+SERPAPI_API_KEY =  os.getenv("SERP_API_KEY")
 
 # Airport Mapping
 AIRPORT_MAPPING = {
